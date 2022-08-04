@@ -1,2 +1,3 @@
 # codingProblems
-working through coding problems
+
+just to keep me coding every day :)
