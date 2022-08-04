@@ -5,8 +5,21 @@
 const numbers = [12, 42, 70304];
 
 const expandedForm = (num) => {
-  const stringArray = num.toString().split("");
-  return stringArray;
+  const length = num.toString().split("").length;
+  const stringArray = num
+    .toString()
+    .split("")
+    .map((num, index) => {
+      let numBreak = num;
+      if (num !== "0") {
+        for (let i = 0; i < length - index - 1; index++) {
+          numBreak = numBreak + "0";
+        }
+      }
+      return numBreak;
+    });
+  const cleanArray = stringArray.filter((num) => num !== "0");
+  return cleanArray.join(" + ");
 };
 
 const answers = numbers.map((num) => {
