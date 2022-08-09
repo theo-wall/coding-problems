@@ -9,7 +9,20 @@
 const numbers = [45, 24, 35, 31, 40, 38, 11];
 
 const stockDifference = (stockPrices) => {
-  return stockPrices;
+  const stockDifferences = stockPrices.map((num1, index1) => {
+    const differences = stockPrices.map((num2, index2) => {
+      if (index2 > index1) {
+        return num2 - num1;
+      }
+    });
+    return Math.max(...differences.filter((num) => num));
+  });
+  const bigDiff = Math.max(...stockDifferences);
+  if (bigDiff > 0) {
+    return bigDiff;
+  } else {
+    return -1;
+  }
 };
 
 const answers = stockDifference(numbers);
