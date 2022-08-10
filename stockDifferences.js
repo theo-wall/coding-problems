@@ -10,7 +10,7 @@ const numbers = [45, 24, 35, 31, 40, 38, 11];
 
 const stockDifference = (stockPrices) => {
   const maxReduce = (maxDif, currentValue, currentIndex) => {
-    let localMaximums = [];
+    const localMaximums = [];
     stockPrices.forEach((num, index) => {
       if (index > currentIndex && num) {
         localMaximums.push(num - currentValue);
