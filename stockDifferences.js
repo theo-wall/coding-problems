@@ -9,22 +9,26 @@
 const numbers = [45, 24, 35, 31, 40, 38, 11];
 
 const stockDifference = (stockPrices) => {
-  const stockDifferences = stockPrices.map((num1, index1) => {
-    const differences = stockPrices.map((num2, index2) => {
-      if (index2 > index1) {
-        return num2 - num1;
+  const maxReduce = (maxDif, currentValue, currentIndex) => {
+    let localMaximums = [];
+    stockPrices.forEach((num, index) => {
+      if (index > currentIndex && num) {
+        localMaximums.push(num - currentValue);
       }
     });
-    return Math.max(...differences.filter((num) => num));
-  });
-  const bigDiff = Math.max(...stockDifferences);
-  if (bigDiff > 0) {
-    return bigDiff;
-  } else {
-    return -1;
-  }
+    const localMax = Math.max(...localMaximums);
+    if (localMax > maxDif) {
+      if (localMax === 0) {
+        return -1;
+      } else {
+        return localMax;
+      }
+    } else {
+      return maxDif;
+    }
+  };
+  return stockPrices.reduce(maxReduce, -1);
 };
-
 const answers = stockDifference(numbers);
 
 console.log(answers);
