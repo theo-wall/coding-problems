@@ -23,6 +23,7 @@ mock user activity class
 
 random.seed(42)
 
+
 class UserActivity:
     def __init__(self, type, sub_type, date):
         self.type = type
@@ -38,7 +39,7 @@ generating random user_activity events for problem (date is the only one that ma
 def generate_user_activity(number_of_activities, period_of_time):
     startDate = datetime.datetime.now()
     date_array = []
-~
+
     for _ in range(number_of_activities):
         date_array.append(UserActivity('Start Session', 'login',
                                        startDate - datetime.timedelta(days=random.randint(1, period_of_time))))
@@ -68,8 +69,8 @@ def longest_weekly_streak(user_activities):
         trailingDate = int(str(year_week_sorted_activities[index - 1])[-2:])
 
         if (leadingDate == 1):
-            if ((leadingDate - trailingDate) == -51): # If two consecutive weeks
-            # If we want to be cute, we could have done somehting like (leadingDatge - trailingDate) % 51 == 1
+            if ((leadingDate - trailingDate) == -51):  # If two consecutive weeks
+                # If we want to be cute, we could have done somehting like (leadingDatge - trailingDate) % 51 == 1
                 streakCounter += 1
             else:
                 # streaks.append(streakCounter)
@@ -92,7 +93,7 @@ def longest_weekly_streak(user_activities):
 
 
 # Generating dates
-user_activities = generate_user_activity(1, 10)
+user_activities = generate_user_activity(100, 500)
 # print(user_activities)
 
 # printing longest streak
