@@ -21,6 +21,7 @@ Make a function "longest_weekly_streak" that we can use to calculate the users l
 mock user activity class
 '''
 
+random.seed(42)
 
 class UserActivity:
     def __init__(self, type, sub_type, date):
