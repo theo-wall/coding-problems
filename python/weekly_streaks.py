@@ -1,6 +1,7 @@
 import datetime
 import random
 
+random.seed(42)
 '''
 At work we are adding "badges" to users profiles, one of the badges will be if a user has logged in at least once a calendar week for 3, 8, and 12 weeks in a row. We will be tracking
 certain events triggered by the user when we authenticate their session (login, page refresh, etc.) to determine if they have been active at least once during the week. Below I've
@@ -17,7 +18,7 @@ Make a function "longest_weekly_streak" that we can use to calculate the users l
 '''
 
 
-'''
+'''å
 mock user activity class
 '''
 
