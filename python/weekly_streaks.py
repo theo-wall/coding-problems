@@ -90,4 +90,6 @@ def longest_weekly_streak(user_activities):
 user_activities = generate_user_activity(100, 500)
 
 # printing longest streak
-print(longest_weekly_streak(user_activities))
+longest_streak = longest_weekly_streak(user_activities)
+print("The longest streak is " + str(longest_streak))
+assert (longest_streak == 10)
