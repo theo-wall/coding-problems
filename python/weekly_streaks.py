@@ -37,7 +37,7 @@ generating random user_activity events for problem (date is the only one that ma
 def generate_user_activity(number_of_activities, period_of_time):
     startDate = datetime.datetime.now()
     date_array = []
-
+~
     for _ in range(number_of_activities):
         date_array.append(UserActivity('Start Session', 'login',
                                        startDate - datetime.timedelta(days=random.randint(1, period_of_time))))
@@ -60,33 +60,39 @@ def longest_weekly_streak(user_activities):
 
     streaks = []
     streakCounter = 0
+    maxStreaks = 0
 
     for index in range(1, len(year_week_sorted_activities)):
         leadingDate = int(str(year_week_sorted_activities[index])[-2:])
         trailingDate = int(str(year_week_sorted_activities[index - 1])[-2:])
 
         if (leadingDate == 1):
-            if ((leadingDate - trailingDate) < 0):
+            if ((leadingDate - trailingDate) == -51): # If two consecutive weeks
+            # If we want to be cute, we could have done somehting like (leadingDatge - trailingDate) % 51 == 1
                 streakCounter += 1
             else:
-                streaks.append(streakCounter)
+                # streaks.append(streakCounter)
+                maxStreaks = max([streakCounter, maxStreaks])
                 streakCounter = 0
         else:
             if ((leadingDate - trailingDate) <= 1):
                 if ((leadingDate - trailingDate) == 1):
                     streakCounter += 1
             else:
-                streaks.append(streakCounter)
+                # streaks.append(streakCounter)
+                maxStreaks = max([streakCounter, maxStreaks])
                 streakCounter = 0
+    maxStreaks = max([streakCounter, maxStreaks])
+    # if (len(streaks) == 0):
+    #     streaks.append(streakCounter)
 
-    if (len(streaks) == 0):
-        streaks.append(streakCounter)
-
-    return sorted(streaks)[-1]
+    # return sorted(streaks)[-1]
+    return maxStreaks
 
 
 # Generating dates
-user_activities = generate_user_activity(100, 500)
+user_activities = generate_user_activity(1, 10)
+# print(user_activities)
 
 # printing longest streak
 print(longest_weekly_streak(user_activities))
